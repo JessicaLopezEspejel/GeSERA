@@ -1,12 +1,12 @@
 
 
-#SERA++
+# SERA++
 
 SERA (Summarization Evaluation by Relevance Analysis) is an evaluation method for automatic 
 summarization proposed by [(Cohan and Goharian, 2016)](https://arxiv.org/pdf/1604.00400.pdf). Here, you can find SERA implementation and SERA+.
 SERA+ is a SERA extension to evaluate summaries. 
 
-##About this code
+## About this code
 
 This code was developed with  python 3.6.7 using [Whoosh](https://whoosh.readthedocs.io/en/latest/intro.html) as search
 engine library. You can install all the requirements you need to run SERA evaluation system with the following instruction:
@@ -15,7 +15,7 @@ engine library. You can install all the requirements you need to run SERA evalua
  pip install requirements.txt
  ` 
 
-##How to run
+## How to run
 
 ```
 python /path/run_main_improve.py -index_docs_folder /path/index/txt/
@@ -27,7 +27,7 @@ python /path/run_main_improve.py -index_docs_folder /path/index/txt/
 
 In the following list we explain the parameters you should use:
 
-######Parameters:
+###### Parameters:
 
 - `-index_docs_folder` It is the folder where the documents that are indexed are. 
 The files are .txt
@@ -46,15 +46,15 @@ The files are .txt
     3. kw - keywords
     4. plus - noun, verb, adjective
 
-##Dataset
+## Dataset
 
-####Queries
+#### Queries
 We used the summaries from [TAC 2008](https://tac.nist.gov/data/past/2008/UpdateSumm08.html) as 
 queries. TAC 2008 contains 48 document sets; each set represents a different topic. 
 Each topic consists of two subsets: A and B. Each subset includes ten documents. 
 Subset B is the update of the documents in subset A.
 
-####Index dataset
+#### Index dataset
  
 For the indexing of documents we use two databases: [AQUAINT-2](https://catalog.ldc.upenn.edu/LDC2008T25)
 and [Wikipedia]().
