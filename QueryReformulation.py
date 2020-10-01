@@ -46,9 +46,8 @@ class QueryReformulation():
 		dic_results[number_file] = docs
 		return dic_results
 
-
 	def noun_phrases(self, parser, searcher, path_file, cntnt_article, rank_cutpoint):
-		dic_results =dict()
+		dic_results = dict()
 		number_file = self.analyzersText.get_number_from_name_file(path_file) # we get something like 000000
 		query_text = self.analyzersText.get_chunk_NP(cntnt_article)
 		myquery = parser.parse(query_text)
@@ -62,7 +61,7 @@ class QueryReformulation():
 		return dic_results
 	
 	def noun_verb_adjetive(self, parser, searcher, path_file, cntnt_article, rank_cutpoint):
-		dic_results =dict()
+		dic_results = dict()
 		number_file = self.analyzersText.get_number_from_name_file(path_file) # we get something like 000000	
 		query_text = self.analyzersText.get_noun_verb_adjetive(cntnt_article)
 		myquery = parser.parse(query_text)
@@ -76,15 +75,15 @@ class QueryReformulation():
 		return dic_results
 		
 	def noun_verb_adjetive_adverb(self, parser, searcher, path_file, cntnt_article, rank_cutpoint):
-                dic_results =dict()
-                number_file = self.analyzersText.get_number_from_name_file(path_file) # we get something like 000000    
-                query_text = self.analyzersText.get_noun_verb_adjetive_adverb(cntnt_article)
-                myquery = parser.parse(query_text)
-                results = searcher.search(myquery, limit= rank_cutpoint)
+		dic_results = dict()
+		number_file = self.analyzersText.get_number_from_name_file(path_file) # we get something like 000000
+		query_text = self.analyzersText.get_noun_verb_adjetive_adverb(cntnt_article)
+		myquery = parser.parse(query_text)
+		results = searcher.search(myquery, limit= rank_cutpoint)
 
-                docs = ()
-                for x in list(results):
-                        doc_name = x['path'].split( '/' )[-1][:-4]
-                        docs += (doc_name,)
-                dic_results[number_file] = docs
-                return dic_results
+		docs = ()
+		for x in list(results):
+				doc_name = x['path'].split( '/' )[-1][:-4]
+				docs += (doc_name,)
+		dic_results[number_file] = docs
+		return dic_results

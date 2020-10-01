@@ -74,15 +74,12 @@ class AnalyzersText():
 #				cntnt = line + ' '
 #		return cntnt
 
-		
-		
 	def is_number(self, s):
 	    try:
 	        float(s)
 	        return True
 	    except ValueError:
 	        return False
-
 
 	def clean_up(self, str_text):
 		"""
@@ -137,7 +134,3 @@ class AnalyzersText():
 			if token_type == 'RB' or token_type == 'RBR' or token_type == 'RBS':
 				lst_words.append(token)
 		return ' '.join(lst_words)
-
-
-	
-	
