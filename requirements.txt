@@ -1,0 +1,6 @@
+Whoosh
+nltk
+numpy
+sklearn
+spacy
+glob

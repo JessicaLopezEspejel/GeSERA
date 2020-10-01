@@ -3,8 +3,8 @@
 # SERA++
 
 SERA (Summarization Evaluation by Relevance Analysis) is an evaluation method for automatic 
-summarization proposed by [(Cohan and Goharian, 2016)](https://arxiv.org/pdf/1604.00400.pdf). Here, you can find SERA implementation and SERA+.
-SERA+ is a SERA extension to evaluate summaries. 
+summarization proposed by [(Cohan and Goharian, 2016)](https://arxiv.org/pdf/1604.00400.pdf). Here, you can find SERA implementation and SERA++.
+SERA++ is a SERA extension to evaluate summaries. 
 
 ## About this code
 
@@ -18,7 +18,7 @@ engine library. You can install all the requirements you need to run SERA evalua
 ## How to run
 
 ```
-python /path/run_main_improve.py -index_docs_folder /path/index/txt/
+python /path/run.py -index_docs_folder /path/index/txt/
 -save_index_folder /path/save_index/  -candidate_folder /path/candidates/
 -reference_folder /path/models/ -results_folder /path/results/
 -index_name name -cut_off_point 5 -interval 0-2 -num_docs_index 60000 
