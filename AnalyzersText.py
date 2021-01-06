@@ -11,6 +11,10 @@ import spacy
 import random
 
 
+import en_core_web_sm
+
+
+
 class AnalyzersText():
 
 	def __init__(self):
@@ -21,7 +25,9 @@ class AnalyzersText():
 	global sp
 	global nlp
 
-	nlp = spacy.load("en_core_web_sm")
+	# nlp = spacy.load("en_core_web_sm")
+	nlp = en_core_web_sm.load()
+
 
 	bad_chars = [',', '¿', '?', '(', ')', '[', ']', '"', '\\', '€', '£', '$','»', '%', '°', '@', '/',
 					 ';', ':', '«', '“',  '·', '¡', '!', '#', '&', '=','_', '-', '|', '{', '}', '`', '+', '*',
@@ -111,9 +117,9 @@ class AnalyzersText():
 		lst_noun_verb_adj = pos_tag(word_tokenize(txt))
 
 		for token, token_type in lst_noun_verb_adj:
-			if token_type == 'NN' or token_type == 'NNS' or token_type == 'NNP' or token_type == 'NNPS':
+			if token_type == 'NN' or token_type == 'NNS':  # or token_type == 'NNP' or token_type == 'NNPS':
 				lst_words.append(token)
-			if token_type =='VB' or token_type == 'VBD' or token_type =='VBG' or token_type =='VBN' or token_type =='VBZ':
+			if token_type =='VB' or token_type =='VBP' or token_type =='VBG' or token_type == 'VBD' or token_type =='VBN' or token_type =='VBZ':
 				lst_words.append(token)
 			if token_type == 'JJ' or token_type == 'JJR' or token_type == 'JJS':
 				lst_words.append(token)

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import division
+import sys
 import glob
 from whoosh.fields import Schema, TEXT
 from whoosh.index import create_in, open_dir, exists_in
@@ -27,6 +28,18 @@ from utils import *
 # -index_name "test" -cut_off_point 5 -interval 0-2 -num_docs_index 60000
 # -refine_query raw -sera_type dis
 
+
+'''
+python /home/jessica/codes/SERA-plus/run.py \
+-index_docs_folder  /scratch_global/jessica/datasets/DUC2007/my_dataset/preprocessed/index_DUC2007/txt/ \
+-save_index_folder /scratch_global/jessica/datasets/DUC2007/my_dataset/preprocessed/index/SERA_1_5/ \
+-reference_folder /scratch_global/jessica/datasets/DUC2007/my_dataset/preprocessed/queries/models/  \
+-candidate_folder /scratch_global/jessica/datasets/DUC2007/my_dataset/preprocessed/queries/candidates/  \
+-results_folder /scratch_global/jessica/datasets/DUC2007/my_dataset/preprocessed/results/ \
+-refine_query raw \
+-cut_off_point 5 -num_docs_index 1125  -index_name SERA_1_5 -interval 0-1440
+
+'''
 def main():
 
 	parser = argparse.ArgumentParser()
@@ -45,16 +58,28 @@ def main():
 
 	opt = parser.parse_args()
 
-	lst_articlesIndex_files = glob.glob(opt.index_docs_folder + "*.txt")
+	if not os.path.isdir(opt.results_folder):
+		os.makedirs(opt.results_folder)
+	if not os.path.isdir(opt.save_index_folder):
+		os.makedirs(opt.save_index_folder)
+
+	lst_articlesIndex_files = glob.glob(opt.index_docs_folder + "*")
 	lst_reference_files = sorted(glob.glob(opt.reference_folder + "D08*"))
-	lst_decoded_files = sorted(glob.glob(opt.candidate_folder + "D08*"))
+	if os.path.isdir(opt.candidate_folder):
+		lst_decoded_files = sorted(glob.glob(opt.candidate_folder + "D08*"))
+	else:
+		lst_decoded_files = [e.strip() for e in open(opt.candidate_folder, 'r').readlines()]
+
+	# print(lst_decoded_files)
+	# sys.exit()
+
 
 	write_chunk = 6
 
 	total_summaries = len(lst_decoded_files)
 	print('*' * 10 + ' Found {} query summaries '.format(total_summaries) + '*' * 10)
 
-	if opt.cut_off_point != 5 or opt.cut_off_point != 10:
+	if opt.cut_off_point != 5 and opt.cut_off_point != 10:
 		print("The value of the rank cut point should be 5 or 10")
 
 	input_interval = [0, total_summaries]
@@ -68,6 +93,8 @@ def main():
 	# Objects
 	dic_automatic_summaries = get_automatic_summaries_gold_standard(
 		lst_decoded_files[input_interval[0]:input_interval[1]], lst_reference_files)
+
+	print("dic_automatic_summaries: ", len(dic_automatic_summaries))
 
 	sqr = QueryReformulation()
 	pool = Pool(8)
@@ -91,7 +118,7 @@ def main():
 		for idx, path_name_file_index in enumerate(lst_articlesIndex_random_files):
 			if idx % 10000 == 0:
 				t1 = time.time()
-				print("  {}/{}. elapsed time : {}s".format(idx, opt.num_docs_index, round(t1 - t0, 3)))
+				print("  {}/{}. elapsed time : {}s".format(idx, opt.num_docs_index, round(t1 - t0, 3))) ; sys.stdout.flush()
 
 			article_cntnt = get_content(path_name_file_index, pool)
 			article_cntnt = " ".join(article_cntnt)
@@ -116,6 +143,7 @@ def main():
 	name_f_scores = opt.results_folder + 'score_' + opt.index_name + '_' + '-'.join(
 		[str(i) for i in input_interval]) + '.txt'
 	name_details = opt.results_folder + opt.index_name + '_' + '-'.join([str(i) for i in input_interval]) + '.txt'
+
 
 	searcher = ix.searcher()
 	parser_query = QueryParser("content", schema=schema, group=qparser.OrGroup)  # ix.schema
