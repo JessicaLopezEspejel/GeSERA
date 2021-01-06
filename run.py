@@ -64,9 +64,9 @@ def main():
 		os.makedirs(opt.save_index_folder)
 
 	lst_articlesIndex_files = glob.glob(opt.index_docs_folder + "*")
-	lst_reference_files = sorted(glob.glob(opt.reference_folder + "D08*"))
+	lst_reference_files = sorted(glob.glob(opt.reference_folder + "D09*"))
 	if os.path.isdir(opt.candidate_folder):
-		lst_decoded_files = sorted(glob.glob(opt.candidate_folder + "D08*"))
+		lst_decoded_files = sorted(glob.glob(opt.candidate_folder + "D09*"))
 	else:
 		lst_decoded_files = [e.strip() for e in open(opt.candidate_folder, 'r').readlines()]
 
