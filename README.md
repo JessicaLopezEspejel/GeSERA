@@ -1,6 +1,6 @@
 
 
-# SERA++
+# wikiSERA
 
 SERA (Summarization Evaluation by Relevance Analysis) is an evaluation method for automatic 
 summarization proposed by [(Cohan and Goharian, 2016)](https://arxiv.org/pdf/1604.00400.pdf). Here, you can find SERA implementation and SERA++.
