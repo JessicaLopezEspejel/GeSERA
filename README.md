@@ -12,7 +12,7 @@ This code was developed with  python 3.6.7 using [Whoosh](https://whoosh.readthe
 engine library. You can install all the requirements you need to run SERA evaluation system with the following instruction:
 
  `
- pip install requirements.txt
+ pip install -r requirements.txt
  ` 
 
 ## How to run
