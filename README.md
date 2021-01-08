@@ -18,7 +18,7 @@ engine library. You can install all the requirements you need to run SERA evalua
 ## How to run
 
 ```
-python /path/run.py 
+python wikisera.py 
 -index_docs_folder /path/index/txt/
 -save_index_folder /path/save_index/
 -reference_folder /path/models/ 
