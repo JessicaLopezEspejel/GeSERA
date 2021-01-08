@@ -39,6 +39,12 @@ index_name
 -cut_off_point 5
 -num_docs_index 10000
 -interval 0-2
+*** TODO: 
+1) provide a limited set of the TAC 2008 corpus
+2) provide a limted set of the TAC 2009 corpus
+3) provide a limited set of the Cohan 2018 corpus
+4) Add GPL licenses
+5) Fork to an anonymous gitlab or github repository
 --> 
 In the following list we explain the parameters you should use:
 
