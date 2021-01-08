@@ -19,11 +19,13 @@ engine library. You can install all the requirements you need to run SERA evalua
 ### Minimal test
 A command for running **wikiSERA** on candidate and reference summaries. 
 ```
-$ python wikisera.py candidates/ references/ 
+$ python wikisera.py -c candidates/ -r references/ -o output/
 ```
 Files names from the `candidates` folder must respect the `source_name.system_number` syntax.  
 
 Files names from the `references` folder must respect the `source_name.reference_name` syntax
+
+The `output/` folder is where the wikiSERA evaluations file will be written.
 
 Example of file names syntax from the [TAC 2009](https://tac.nist.gov/2009/Summarization/) summarization track. 
 ```bash
@@ -37,8 +39,52 @@ D0901-A.M.100.A.A  D0901-A.M.100.A.C  D0901-A.M.100.A.F  D0901-A.M.100.A.H
 ```
 Where the source document name is `D0901-A.M.100.A` and the human gold standard reference summaries for the that document are indicated with `.A`, `.C`, etc. 
 
+The result of this minimal execution should be:
+```bash
+********** Found 8 query summaries **********
+dic_automatic_summaries:  8
+lst_articlesIndex_random_files 10000
+********** Processing 8 summary queries : 0->8 **********
+.......... candidates/D0901-A.M.100.A.1
+.......... candidates/D0901-A.M.100.A.2
+.......... candidates/D0901-A.M.100.A.3
+.......... candidates/D0901-A.M.100.A.4
+.......... candidates/D0901-A.M.100.A.5
+.......... candidates/D0901-A.M.100.A.6
+  6/8. elapsed time : 22.686s
+.......... candidates/D0901-A.M.100.A.7
+.......... candidates/D0901-A.M.100.A.8
+  8/8. elapsed time : 30.531s
+  output evaluation files:
+.......... output/wikisera_scores_0-8.txt
+.......... output/wikisera_retrieved_docs_0-8.txt
+********** Evaluation done in 30.54s **********
+```
+
+The content of the `wikisera/output/wikisera_scores.txt` shows wikiSERA score for each reference and the wikiSERA average score for that file: 
+```
+D0901-A.M.100.A.1       0.4 0.6 0.4 0.6 --> 0.X x es el promedio (cuando lo termines)
+D0901-A.M.100.A.2       0.8 0.6 1.0 0.8 --> 0.X
+D0901-A.M.100.A.3       0.6 0.8 0.6 0.8 --> 0.X
+D0901-A.M.100.A.4       0.6 1.0 0.6 0.8 --> 0.X
+D0901-A.M.100.A.5       0.6 1.0 0.6 0.8 --> 0.X
+D0901-A.M.100.A.6       0.6 1.0 0.6 0.8 --> 0.X
+D0901-A.M.100.A.7       0.8 0.8 0.8 0.8 --> 0.X
+D0901-A.M.100.A.8       0.6 0.6 0.4 0.6 --> 0.X
 <!--
 ```
+
+The output file `wikisera/output/wikisera_retrieved_docs.txt` shows retrieved documents from the Wikipedia subset for each evaluated file and its references:
+```
+$ head output/wikisera_retrieved_docs 0-8.txt 
+D0901-A.M.100.A.1       ('id_51299_Jammu-and-Kas', 'id_59659_Vallabhbhai-P', 'id_2269057_Mansoor-', 'id_16826_K', 'id_554578_Maurya-Em')
+D0901-A.M.100.A.A       ('id_51299_Jammu-and-Kas', 'id_59659_Vallabhbhai-P', 'id_2188274_Pokhra', 'id_2084667_Jammu-Kashmir-Liberation-F', 'id_22158_Nuclear-prolifera')
+D0901-A.M.100.A.C       ('id_2269057_Mansoor-', 'id_51299_Jammu-and-Kas', 'id_59659_Vallabhbhai-P', 'id_2084667_Jammu-Kashmir-Liberation-F', 'id_373733_V-P-S')
+D0901-A.M.100.A.F       ('id_2269057_Mansoor-', 'id_51299_Jammu-and-Kas', 'id_2084667_Jammu-Kashmir-Liberation-F', 'id_2188274_Pokhra', 'id_22158_Nuclear-prolifera')
+D0901-A.M.100.A.H       ('id_51299_Jammu-and-Kas', 'id_2269057_Mansoor-', 'id_59659_Vallabhbhai-P', 'id_2084667_Jammu-Kashmir-Liberation-F', 'id_22158_Nuclear-prolifera')
+```
+
+
 python wikisera.py 
 -index_docs_folder /path/index/txt/
 -save_index_folder /path/save_index/
