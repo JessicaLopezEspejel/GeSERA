@@ -85,11 +85,12 @@ D0901-A.M.100.A.H       ('id_51299_Jammu-and-Kas', 'id_2269057_Mansoor-', 'id_59
 ```
 ### Advanced execution
 
-```$ python wikisera.py 
+```bash
+$ python wikisera.py 
            -c candidates/ 
            -r references/ 
            -o output/
-           -f raw
+           -q raw
            -t sera
            -p 5
            -n 10000
@@ -128,6 +129,21 @@ index_name
 In the following list we explain the parameters you should use:
 
 ###### Parameters:
+- `-r folder_name` In this folder we have the gold standard summaries
+- `-c folder_name` It is the folder where there are the candidate docs
+- `-o folder_name` It is the folder where the scores are stored
+- `-p number` Number equal to the rank of the cut-off point. It is the number of documents selected from the index, most related to a query.
+                   We experimented with 5 and 10 ranke check-off point.
+- `-n number` It is the number of documents that are indexed
+- `-i number-number` Interval of the number of summaries to evaluate
+- `-t value` Sera type: There are two possible values: *sera* or *dis*
+- `-q value` It is the method by which the query is redefined. There are four options:
+
+    1. raw - use all text without changes
+    2. np - noun phrases
+    3. kw - keywords
+    4. plus - noun, verb, adjective
+
 <!--
 - `-index_docs_folder` It is the folder where the documents that are indexed are. 
 The files are .txt
