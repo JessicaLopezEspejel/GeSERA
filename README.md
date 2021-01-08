@@ -12,7 +12,7 @@ This code was developed with  python 3.6.7 using [Whoosh](https://whoosh.readthe
 engine library. You can install all the requirements you need to run SERA evaluation system with the following instruction:
 
  `
- pip install -r requirements.txt
+ $ pip install -r requirements.txt
  ` 
 
 ## How to run
@@ -21,9 +21,9 @@ A command for running **wikiSERA** on candidate and reference summaries.
 ```
 python wikisera.py candidates/ references/ 
 ```
-Files in the `candidate_summaries` folder must respect the `source_name.system_number` syntax.  
+Files names from the `candidates` folder must respect the `source_name.system_number` syntax.  
 
-Files in the `reference_summaries` folder must respect the `source_name.reference_name` syntax
+Files names from the `references` folder must respect the `source_name.reference_name` syntax
 
 Example of file names syntax from the [TAC 2009](https://tac.nist.gov/2009/Summarization/) summarization track. 
 ```bash
