@@ -28,7 +28,7 @@ python wikisera.py
 -cut_off_point 5 -num_docs_index 10000 
 -index_name name  -interval 0-2
 ```
-
+<!-- comment --> 
 In the following list we explain the parameters you should use:
 
 ###### Parameters:
