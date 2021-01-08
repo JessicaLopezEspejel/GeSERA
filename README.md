@@ -21,21 +21,21 @@ A command for running **wikiSERA** on candidate and reference summaries.
 ```
 python wikisera.py candidates/ references/ 
 ```
-Files in the `candidate_summaries` folder must respect the `file_name.system_number` syntax.  
+Files in the `candidate_summaries` folder must respect the `source_name.system_number` syntax.  
 
-Files in the `reference_summaries` folder must respect the `file_name.reference_name` syntax
+Files in the `reference_summaries` folder must respect the `source_name.reference_name` syntax
 
 Example of file names syntax from the [TAC 2009](https://tac.nist.gov/2009/Summarization/) summarization track. 
 ```bash
 wikiSERA/candidates$ ls 
 D0901-A.M.100.A.1   D0901-A.M.100.A.2  D0901-A.M.100.A.3  D0901-A.M.100.A.4  D0901-A.M.100.A.5  D0901-A.M.100.A.6  D0901-A.M.100.A.7  D0901-A.M.100.A.8
 ```
-In the above example, the file name is `D0901-A.M.100.A` and the evaluated summarization systems follows as `.1` (system 1), `.2` (system 2). For this file name, we would have the following references folder:
+In the above example, the summarized source document name is `D0901-A.M.100.A` and the evaluated summarization systems are indicated as `.1` (system 1), `.2` (system 2), etc. For this file name, we would have the following references folder:
 ```bash
 wikiSERA/references$ ls D0901-A.M.100.A.*
 D0901-A.M.100.A.A  D0901-A.M.100.A.C  D0901-A.M.100.A.F  D0901-A.M.100.A.H
 ```
-Where the file name is `D0901-A.M.100.A` and the human gold standard references for the same source document are indicated with `.A`, `.C`, etc. 
+Where the source document name is `D0901-A.M.100.A` and the human gold standard reference summaries for the that document are indicated with `.A`, `.C`, etc. 
 
 <!--
 ```
