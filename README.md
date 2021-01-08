@@ -19,7 +19,7 @@ engine library. You can install all the requirements you need to run SERA evalua
 ### Minimal test
 A command for running **wikiSERA** on candidate and reference summaries. 
 ```
-python wikisera.py candidates/ references/ 
+$ python wikisera.py candidates/ references/ 
 ```
 Files names from the `candidates` folder must respect the `source_name.system_number` syntax.  
 
