@@ -28,7 +28,18 @@ python wikisera.py
 -cut_off_point 5 -num_docs_index 10000 
 -index_name name  -interval 0-2
 ```
-<!-- comment --> 
+<!--
+***useless parameters:
+index_docs_folder
+save_index_folder
+index_name
+***optional parameters
+-refine_query raw
+-sera_type sera
+-cut_off_point 5
+-num_docs_index 10000
+-interval 0-2
+--> 
 In the following list we explain the parameters you should use:
 
 ###### Parameters:
