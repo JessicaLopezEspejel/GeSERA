@@ -25,6 +25,13 @@ Files in the `candidate_summaries` folder must respect the `file_name.system_num
 
 Files in the `reference_summaries` folder must respect the `file_name.reference_name` syntax
 
+Example of file names syntax (from the [TAC 2009](https://tac.nist.gov/2009/Summarization/) summarization track. 
+```bash
+wikiSERA/candidate$ ls 
+D0901-A.M.100.A.1   D0901-A.M.100.A.2  D0901-A.M.100.A.3  D0901-A.M.100.A.4  D0901-A.M.100.A.5  D0901-A.M.100.A.6  D0901-A.M.100.A.7  D0901-A.M.100.A.8
+```
+
+
 <!--
 ```
 python wikisera.py 
