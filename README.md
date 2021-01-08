@@ -16,7 +16,16 @@ engine library. You can install all the requirements you need to run SERA evalua
  ` 
 
 ## How to run
+### Minimal test
+A command for running **wikiSERA** on candidate and reference summaries. 
+```
+python wikisera.py candidate_summaries/ reference_summaries/ 
+```
+Files in the `candidate_summaries` folder must respect the `file_name.system_number` syntax.  
 
+Files in the `reference_summaries` folder must respect the `file_name.reference_name` syntax
+
+<!--
 ```
 python wikisera.py 
 -index_docs_folder /path/index/txt/
@@ -28,7 +37,7 @@ python wikisera.py
 -cut_off_point 5 -num_docs_index 10000 
 -index_name name  -interval 0-2
 ```
-<!--
+
 ***useless parameters:
 index_docs_folder
 save_index_folder
@@ -40,11 +49,15 @@ index_name
 -num_docs_index 10000
 -interval 0-2
 *** TODO: 
+1) Useless and optional parameters
+2) Dependencies installation script
+7) File Names
 1) provide a limited set of the TAC 2008 corpus
 2) provide a limted set of the TAC 2009 corpus
 3) provide a limited set of the Cohan 2018 corpus
 4) Add GPL licenses
 5) Fork to an anonymous gitlab or github repository
+
 --> 
 In the following list we explain the parameters you should use:
 
