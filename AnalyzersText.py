@@ -14,8 +14,7 @@ import random
 import en_core_web_sm
 
 
-
-class AnalyzersText():
+class AnalyzersText:
 
 	def __init__(self):
 		pass 

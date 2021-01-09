@@ -62,12 +62,7 @@ def get_automatic_summaries_gold_standard(files_automatic_summaries, files_gold_
 	ID_subset_automatic_summary = ''
 	
 	for path_automatic_summary in files_automatic_summaries:
-		id_number_summary = path_automatic_summary.split('/')[-1].split('.')[-1]
-		
-		if int(id_number_summary) < 58:
-			#ID_subset_automatic_summary = path_automatic_summary.split('/')[-1].split('.')[0]
-			#ID_automatic_summary = ID_subset_automatic_summary + '.' + ID_number_summary
-			dic_automatic_summaries[path_automatic_summary] = []
+		dic_automatic_summaries[path_automatic_summary] = []
 
 	for path_gold_standard in files_gold_standard:
 		pattern_gold_standard = path_gold_standard.split('/')[-1].split('.')[0]
@@ -95,5 +90,5 @@ def get_previous_state(name_file):
 		file = open(name_file, 'r')
 		for line in file:
 			key, val = line.split('\t')[0], line.split('\t')[-1]
-			dic_score[key]=val
+			dic_score[key] = val
 	return dic_score

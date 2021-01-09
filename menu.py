@@ -40,7 +40,7 @@ def display_menu(refine_query, cut_off_point, sera, sera_type, poolq, sqr, pool,
             dic_cand = poolq.apply_async(sqr.keywords,
                                          args=(parser_query, searcher, path_candidate, cntnt_cand, cut_off_point))
         if 'plus' in refine_query:  # Noun phrases, verb, adjective
-            dic_cand = poolq.apply_async(sqr.noun_verb_adjetive,
+            dic_cand = poolq.apply_async(sqr.noun_verb_adjective,
                                          args=(parser_query, searcher, path_candidate, cntnt_cand, cut_off_point))
         dic_candidate = dic_cand.get()
 
@@ -65,7 +65,7 @@ def display_menu(refine_query, cut_off_point, sera, sera_type, poolq, sqr, pool,
                 dic_ref = poolq.apply_async(sqr.keywords,
                                             args=(parser_query, searcher, path_reference, cntnt_ref, cut_off_point))
             if 'plus' in refine_query:  # noun phrases, verb, adjetive
-                dic_ref = poolq.apply_async(sqr.noun_verb_adjetive,
+                dic_ref = poolq.apply_async(sqr.noun_verb_adjective,
                                             args=(parser_query, searcher, path_reference, cntnt_ref, cut_off_point))
             dic_reference = dic_ref.get()
 

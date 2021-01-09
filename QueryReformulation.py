@@ -60,7 +60,7 @@ class QueryReformulation:
 		dic_results[number_file] = docs
 		return dic_results
 	
-	def noun_verb_adjetive(self, parser, searcher, path_file, content_article, rank_cutpoint):
+	def noun_verb_adjective(self, parser, searcher, path_file, content_article, rank_cutpoint):
 		dic_results = dict()
 		number_file = self.analyzersText.get_number_from_name_file(path_file) # we get something like 000000	
 		query_text = self.analyzersText.get_noun_verb_adjetive(content_article)
@@ -74,7 +74,7 @@ class QueryReformulation:
 		dic_results[number_file] = docs
 		return dic_results
 		
-	def noun_verb_adjetive_adverb(self, parser, searcher, path_file, content_article, rank_cutpoint):
+	def noun_verb_adjective_adverb(self, parser, searcher, path_file, content_article, rank_cutpoint):
 		dic_results = dict()
 		number_file = self.analyzersText.get_number_from_name_file(path_file) # we get something like 000000
 		query_text = self.analyzersText.get_noun_verb_adjetive_adverb(content_article)
