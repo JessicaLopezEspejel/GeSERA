@@ -3,6 +3,15 @@
 import os
 
 
+def get_interval(interval):
+	tab = interval.split('-')
+	if len(tab) == 2:
+		input_interval = [int(tab[0]), int(tab[1])]
+	else:
+		input_interval = [0, int(interval)]
+	return input_interval
+
+
 def process_read(content):
 	return content
 

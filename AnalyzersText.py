@@ -54,38 +54,15 @@ class AnalyzersText():
 			dic_summaries[rnd_number] = lst_summaries_generated[rnd_number]
 		return list(dic_goal.values()), list(dic_summaries.values())
 
-
 	def get_number_from_name_file(self, path_file):
 		return path_file.split('/')[-1].split('_')[0]
 
-	#def read_file(self, file_path):
-#		"""
-#		Input: path of the file, it can contain many lines.
-#		We will read line by line and ...
-#		Output: string (we will convert all lines in only one.)
-#		"""
-#		cntnt = ''
-#		with open(file_path, 'r') as _file:
-#			for line in _file:
-#				line = line.rstrip('\r\n')
-#				cntnt += line + ' '
-#		return cntnt#
-
-#	
-#	def read_file2(self, file_path):
-#		cntnt = ''
-#		with open(file_path, 'r', encoding='utf-8') as _file:
-#			for line in _file:
-#				line = line.rstrip('\r\n')
-#				cntnt = line + ' '
-#		return cntnt
-
 	def is_number(self, s):
-	    try:
-	        float(s)
-	        return True
-	    except ValueError:
-	        return False
+		try:
+			float(s)
+			return True
+		except ValueError:
+			return False
 
 	def clean_up(self, str_text):
 		"""
@@ -109,7 +86,7 @@ class AnalyzersText():
 		doc = nlp(txt)
 		str_chunk = ''
 		for chunk in doc.noun_chunks:
-		    str_chunk += chunk.text + " "
+			str_chunk += chunk.text + " "
 		return str_chunk
 	
 	def get_noun_verb_adjetive(self, txt):
@@ -125,7 +102,6 @@ class AnalyzersText():
 				lst_words.append(token)
 		return ' '.join(lst_words)
 
-	
 	def get_noun_verb_adjetive_adverb(self, txt):
 		lst_words = []
 		lst_noun_verb_adj = pos_tag(word_tokenize(txt))
