@@ -13,13 +13,15 @@ engine library. You can install all the requirements you need to run SERA evalua
 
  `
  $ pip install -r requirements.txt
+ $ python -m spacy download en_core_web_sm
+ $ tar xzvf 
  ` 
 
 ## How to run
 ### Basic execution
 A command for running **wikiSERA** on candidate and reference summaries. 
 ```
-$ python wikisera.py -c candidates/ -r references/ -o output/
+$ python wikisera.py -c test/candidates/ -r test/references/ -o test/output/
 ```
 Files names from the `candidates` folder must respect the `source_name.system_number` syntax.  
 
