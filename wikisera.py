@@ -2,6 +2,7 @@
 
 from __future__ import division
 import sys
+import shutil
 import os
 import glob
 from whoosh.fields import Schema, TEXT
@@ -32,7 +33,7 @@ def main():
 	parser.add_argument('-i', type=str, default=None)  # interval
 	parser.add_argument('-p', type=int, default=5)  # cut_off_point
 	parser.add_argument('-index_name', type=str, default='wiki')  # index name
-	parser.add_argument('-index_docs_folder', type=str, default=path_wikisera + '/data/wiki30000/')  # files to index
+	parser.add_argument('-index_docs_folder', type=str, default=path_wikisera + '/data/wiki10000/')  # files to index
 	parser.add_argument('-save_index_folder', type=str, default=path_wikisera + '/data/index/')  # save index
 
 	opt = parser.parse_args()
