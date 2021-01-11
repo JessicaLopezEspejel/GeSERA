@@ -5,15 +5,14 @@ import os
 from methods_correlation import spearman_correlation
 from methods_correlation import pearson_correlation
 from methods_correlation import kendall_correlation
-from statistics import mean
 from utils import *
 
 
 def main():
     path_correlation = os.getcwd()
     parser = argparse.ArgumentParser()
-    parser.add_argument('-sera_file', type=str, default=path_correlation +'/ordered_score_wiki_0-4840.txt')
-    parser.add_argument('-file_scores', type=str, default=path_correlation + '/SCORES_TAC2009.txt')
+    parser.add_argument('-sera_file', type=str, default=path_correlation +'/data_example/ordered_score_wiki_0-4840.txt')
+    parser.add_argument('-file_scores', type=str, default=path_correlation + '/data_example/SCORES_TAC2009.txt')
 
     opt = parser.parse_args()
 
@@ -53,8 +52,6 @@ def main():
             corr_kendall, _ = kendall_correlation(pyramid, sera_value)
             print('{0} {1} Pearson: {2:.3f} Spearman: {3:.3f} Kendall: {4:.3f}'.format(label_pyramid, label_SERA,
                                                                     corr_pearson, corr_spearman, corr_kendall))
-
-
 
         # for rouge_F, rouge_P, rouge_R, label_rouge in zip(lst_rouge_F, lst_rouge_P, lst_rouge_R, labels_rouge):
         #     corr_pearson_F, _ = pearson_correlation(pyramid, rouge_F)
