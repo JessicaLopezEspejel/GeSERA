@@ -32,18 +32,19 @@ def main():
 	parser.add_argument('-n', type=int, default=10000)  # num_docs_index
 	parser.add_argument('-i', type=str, default=None)  # interval
 	parser.add_argument('-p', type=int, default=5)  # cut_off_point
-	parser.add_argument('-index_name', type=str, default='wiki')  # index name
-	parser.add_argument('-index_docs_folder', type=str, default=path_wikisera + '/data/wiki10000/')  # files to index
-	parser.add_argument('-save_index_folder', type=str, default=path_wikisera + '/data/index/')  # save index
+
+	parser.add_argument('-x', type=str, default='wiki')  # index name
+	parser.add_argument('-d', type=str, default=path_wikisera + '/data/wiki10000/')  # documents to index
+	parser.add_argument('-s', type=str, default=path_wikisera + '/data/index/')  # save index folder
 
 	opt = parser.parse_args()
 
 	if not os.path.isdir(opt.o):
 		os.makedirs(opt.o)
-	if not os.path.isdir(opt.save_index_folder):
-		os.makedirs(opt.save_index_folder)
+	if not os.path.isdir(opt.s):
+		os.makedirs(opt.s)
 
-	lst_index_files = glob.glob(opt.index_docs_folder + "*")
+	lst_index_files = glob.glob(opt.d + "*")
 	lst_reference_files = sorted(glob.glob(opt.r + "*"))
 
 	if os.path.isdir(opt.c):
@@ -80,14 +81,16 @@ def main():
 	pool = Pool(8)
 	schema = Schema(path=TEXT(stored=True), content=TEXT(analyzer=StemmingAnalyzer()))
 	# content=TEXT(analyzer=StemmingAnalyzer()), RegexTokenizer()
-	ix = create_index(opt.save_index_folder, opt.index_name, opt.n, lst_doc_index, schema, pool)
+	ix = create_index(opt.s, opt.x, opt.n, lst_doc_index, schema, pool)
 
 	# Parse a query string
 	sera = MeasureSera()
 
-	name_f_scores = opt.o + 'score_' + opt.index_name + '_' + '-'.join(
+	name_f_scores = opt.o + 'score_' + opt.t + '_' + opt.q + '_' + str(opt.p) + '_' + '-'.join(
 		[str(i) for i in input_interval]) + '.txt'
-	name_details = opt.o + opt.index_name + '_' + '-'.join([str(i) for i in input_interval]) + '.txt'
+	# name_details = opt.o + opt.x + '_' + '-'.join([str(i) for i in input_interval]) + '.txt'
+	name_details = opt.o + opt.t + '_' + opt.q + '_' + str(opt.p) + '_' + '-'.join(
+		[str(i) for i in input_interval]) + '.txt'
 
 	sqr = QueryReformulation()
 	searcher = ix.searcher()

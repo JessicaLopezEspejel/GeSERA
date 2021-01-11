@@ -89,6 +89,7 @@ def read_SERA_(file_scores, which_column):
             lst_values_sera.append(np.average(val, axis=0))
     return lst_values_sera
 
+
 def read_SERA(file_scores, which_column):
     dic_sera = defaultdict(lambda: [])
     with open(file_scores, 'r') as file:

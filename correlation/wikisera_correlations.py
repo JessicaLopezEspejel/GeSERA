@@ -19,10 +19,11 @@ def main():
     print(opt.sera_file)
     print(opt.file_scores)
 
-    # ----------------------------- PYRAMID -----------------------------
+    # ----------------------------- PYRAMID -----------------------------s
     lst_pyr_4m, lst_pyr_3m = read_pyramid(opt.file_scores)
     labels_pyramid = ["4m", "3m"]
     lst_pyramid = [lst_pyr_4m, lst_pyr_3m]
+
 
     # ------------------------------ ROUGE ------------------------------
     lst_rouge1_R, lst_rouge1_P, lst_rouge1_F = read_ROUGE_1(opt.file_scores)
