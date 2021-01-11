@@ -61,7 +61,8 @@ def main():
 
 	input_interval = [0, 0]
 	if opt.i is None:
-		opt.i = len(lst_decoded_files)
+		opt.i = '0-' + str(len(lst_decoded_files))
+		input_interval = get_interval(opt.i)
 	else:
 		input_interval = get_interval(opt.i)
 	print('Interval of summaries to evaluate:', opt.i)
