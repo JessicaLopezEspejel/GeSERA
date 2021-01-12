@@ -61,19 +61,26 @@ test/candidates/D0901-A.M.100.A.8
 ********** Evaluation done in 63.133s **********
 ```
 
-The content of the `test/output/` folde contains two files:
+The `test/output/` folder contains two files:
 ```bash
 $ ls /test/output/
 score_sera_raw_5_0-8.2021.01.12.00h49.txt  sera_raw_5_0-8.2021.01.12.00h49.txt
 ```
+The content of the `test/output/score_sera_raw_5_0-8.2021.01.12.00h49.txt` shows the wikiSERA score for each candidate-reference comparison. The last column is the average each candidate-reference score. In our example from TAC 2009 we have 4 columns (one for each reference summary). The fifth column is the average wikiSERA score: 
+```
+D0901-A.M.100.A.1       0.2 0.2 0.2 0.2 0.2
+D0901-A.M.100.A.2       0.4 0.8 1.0 0.6 0.7000000000000001
+D0901-A.M.100.A.3       0.6 0.4 0.6 0.4 0.5
+D0901-A.M.100.A.4       0.4 0.6 0.6 0.4 0.5
+D0901-A.M.100.A.5       0.6 0.6 0.6 0.6 0.6
+D0901-A.M.100.A.6       0.4 0.6 0.8 0.4 0.55
+D0901-A.M.100.A.7       0.6 0.6 0.6 0.6 0.6
+D0901-A.M.100.A.8       0.4 0.6 0.6 0.4 0.5
+```
 
-The content of the `wikisera/output/wikisera_scores.txt` shows wikiSERA score for each reference and the wikiSERA average score for that file: 
+The output file `wikisera/output/sera_raw_5_0-8.2021.01.12.00h49.txt` shows retrieved documents from the Wikipedia subset for each evaluated file and its references:
 ```
-```
-
-The output file `wikisera/output/wikisera_retrieved_docs.txt` shows retrieved documents from the Wikipedia subset for each evaluated file and its references:
-```
-$ head output/wikisera_retrieved_docs_0-8.txt 
+$ head test/output/sera_raw_5_0-8.2021.01.12.00h49.txt 
 D0901-A.M.100.A.1       ('id_51299_Jammu-and-Kas', 'id_59659_Vallabhbhai-P', 'id_2269057_Mansoor-', 'id_16826_K', 'id_554578_Maurya-Em')
 D0901-A.M.100.A.A       ('id_51299_Jammu-and-Kas', 'id_59659_Vallabhbhai-P', 'id_2188274_Pokhra', 'id_2084667_Jammu-Kashmir-Liberation-F', 'id_22158_Nuclear-prolifera')
 D0901-A.M.100.A.C       ('id_2269057_Mansoor-', 'id_51299_Jammu-and-Kas', 'id_59659_Vallabhbhai-P', 'id_2084667_Jammu-Kashmir-Liberation-F', 'id_373733_V-P-S')
