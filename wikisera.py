@@ -5,6 +5,7 @@ import sys
 import shutil
 import os
 import glob
+import datetime
 from whoosh.fields import Schema, TEXT
 from whoosh.analysis import *
 from whoosh import qparser
@@ -38,17 +39,17 @@ def main():
 	parser.add_argument('-s', type=str, default=path_wikisera + '/data/index/')  # save index folder
 
 	opt = parser.parse_args()
-
+	opt.o = opt.o + "/"
 	if not os.path.isdir(opt.o):
 		os.makedirs(opt.o)
 	if not os.path.isdir(opt.s):
 		os.makedirs(opt.s)
 
-	lst_index_files = glob.glob(opt.d + "*")
-	lst_reference_files = sorted(glob.glob(opt.r + "*"))
+	lst_index_files = glob.glob(opt.d + "/*")
+	lst_reference_files = sorted(glob.glob(opt.r + "/*"))
 
 	if os.path.isdir(opt.c):
-		lst_decoded_files = sorted(glob.glob(opt.c + "*"))
+		lst_decoded_files = sorted(glob.glob(opt.c + "/*"))
 	else:
 		lst_decoded_files = [e.strip() for e in open(opt.c, 'r').readlines()]
 
@@ -56,7 +57,7 @@ def main():
 
 	total_summaries = len(lst_decoded_files)
 	print('*' * 10 + ' Found {} query summaries '.format(total_summaries) + '*' * 10)
-
+        
 	if opt.p != 5 and opt.p != 10:
 		print("The value of the rank cut point should be 5 or 10")
 
@@ -74,23 +75,22 @@ def main():
 	num_files = len(dic_automatic_summaries)
 
 	lst_doc_index = lst_index_files[0:opt.n]
-	print("lst_doc_index", len(lst_doc_index))
-	# lst_reference_random_files = lst_reference_files[input_interval[0]:input_interval[1]]
-	# lst_decoded_random_files = lst_decoded_files[input_interval[0]:input_interval[1]]
-
+	print("Using a ", len(lst_doc_index), " Wikipedia documents")
+	timestamp = "." + datetime.datetime.now().strftime('%Y.%m.%d.%Hh%M')
+	
 	pool = Pool(8)
 	schema = Schema(path=TEXT(stored=True), content=TEXT(analyzer=StemmingAnalyzer()))
-	# content=TEXT(analyzer=StemmingAnalyzer()), RegexTokenizer()
+	
 	ix = create_index(opt.s, opt.x, opt.n, lst_doc_index, schema, pool)
 
 	# Parse a query string
 	sera = MeasureSera()
 
 	name_f_scores = opt.o + 'score_' + opt.t + '_' + opt.q + '_' + str(opt.p) + '_' + '-'.join(
-		[str(i) for i in input_interval]) + '.txt'
-	# name_details = opt.o + opt.x + '_' + '-'.join([str(i) for i in input_interval]) + '.txt'
+		[str(i) for i in input_interval]) + timestamp + '.txt'
+	
 	name_details = opt.o + opt.t + '_' + opt.q + '_' + str(opt.p) + '_' + '-'.join(
-		[str(i) for i in input_interval]) + '.txt'
+		[str(i) for i in input_interval]) + timestamp + '.txt'
 
 	sqr = QueryReformulation()
 	searcher = ix.searcher()
