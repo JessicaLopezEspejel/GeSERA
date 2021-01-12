@@ -3,8 +3,7 @@
 # wikiSERA
 
 SERA (Summarization Evaluation by Relevance Analysis) is an evaluation method for automatic 
-summarization proposed by [(Cohan and Goharian, 2016)](https://arxiv.org/pdf/1604.00400.pdf). Here, you can find SERA implementation and wikiSERA.
-**wikiSERA** is a SERA extension to evaluate summaries. 
+summarization proposed by [(Cohan and Goharian, 2016)](https://arxiv.org/pdf/1604.00400.pdf). Candidate (automatic) summaries are compared to (human) references by means of an information retrieval query to an indexed document corpus. **wikiSERA** is an open source implementation of the SERA method that uses Wikipedia documentsas a corpus for general domain summaries evaluation. 
 
 ## About this code
 
@@ -14,7 +13,9 @@ engine library. You can install all the requirements you need to run SERA evalua
  ```bash
  $ pip install -r requirements.txt
  $ python -m spacy download en_core_web_sm
- $ tar xzvf 
+ $ cd data
+ $ tar xzvf tar xzvf wiki10000.tar.gz
+ $ cd ..
  ```
 
 ## How to run
@@ -44,36 +45,30 @@ Where the source document name is `D0901-A.M.100.A` and the human gold standard 
 The result of this minimal execution should be:
 ```bash
 ********** Found 8 query summaries **********
-dic_automatic_summaries:  8
-lst_articlesIndex_random_files 10000
+Interval of summaries to evaluate: 0-8
+Using a  10000  Wikipedia documents
 ********** Processing 8 summary queries : 0->8 **********
-.......... candidates/D0901-A.M.100.A.1
-.......... candidates/D0901-A.M.100.A.2
-.......... candidates/D0901-A.M.100.A.3
-.......... candidates/D0901-A.M.100.A.4
-.......... candidates/D0901-A.M.100.A.5
-.......... candidates/D0901-A.M.100.A.6
-  6/8. elapsed time : 22.686s
-.......... candidates/D0901-A.M.100.A.7
-.......... candidates/D0901-A.M.100.A.8
-  8/8. elapsed time : 30.531s
-  output evaluation files:
-.......... output/wikisera_scores_0-8.txt
-.......... output/wikisera_retrieved_docs_0-8.txt
-********** Evaluation done in 30.54s **********
+test/candidates/D0901-A.M.100.A.1
+test/candidates/D0901-A.M.100.A.2
+test/candidates/D0901-A.M.100.A.3
+test/candidates/D0901-A.M.100.A.4
+test/candidates/D0901-A.M.100.A.5
+test/candidates/D0901-A.M.100.A.6
+  6/8. elapsed time : 49.319s
+test/candidates/D0901-A.M.100.A.7
+test/candidates/D0901-A.M.100.A.8
+  8/8. elapsed time : 63.122s
+********** Evaluation done in 63.133s **********
+```
+
+The content of the `test/output/` folde contains two files:
+```bash
+$ ls /test/output/
+score_sera_raw_5_0-8.2021.01.12.00h49.txt  sera_raw_5_0-8.2021.01.12.00h49.txt
 ```
 
 The content of the `wikisera/output/wikisera_scores.txt` shows wikiSERA score for each reference and the wikiSERA average score for that file: 
 ```
-D0901-A.M.100.A.1       0.4 0.6 0.4 0.6 --> 0.X x es el promedio (cuando lo termines)
-D0901-A.M.100.A.2       0.8 0.6 1.0 0.8 --> 0.X
-D0901-A.M.100.A.3       0.6 0.8 0.6 0.8 --> 0.X
-D0901-A.M.100.A.4       0.6 1.0 0.6 0.8 --> 0.X
-D0901-A.M.100.A.5       0.6 1.0 0.6 0.8 --> 0.X
-D0901-A.M.100.A.6       0.6 1.0 0.6 0.8 --> 0.X
-D0901-A.M.100.A.7       0.8 0.8 0.8 0.8 --> 0.X
-D0901-A.M.100.A.8       0.6 0.6 0.4 0.6 --> 0.X
-<!--
 ```
 
 The output file `wikisera/output/wikisera_retrieved_docs.txt` shows retrieved documents from the Wikipedia subset for each evaluated file and its references:
