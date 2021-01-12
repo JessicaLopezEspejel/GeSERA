@@ -11,11 +11,11 @@ summarization proposed by [(Cohan and Goharian, 2016)](https://arxiv.org/pdf/160
 This code was developed with  python 3.6.7 using [Whoosh](https://whoosh.readthedocs.io/en/latest/intro.html) as search
 engine library. You can install all the requirements you need to run SERA evaluation system with the following instruction:
 
- `
+ ```bash
  $ pip install -r requirements.txt
  $ python -m spacy download en_core_web_sm
  $ tar xzvf 
- ` 
+ ```
 
 ## How to run
 ### Basic execution
