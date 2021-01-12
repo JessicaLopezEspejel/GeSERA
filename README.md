@@ -46,7 +46,7 @@ The result of this minimal execution should be:
 ```bash
 ********** Found 8 query summaries **********
 Interval of summaries to evaluate: 0-8
-Using a  10000  Wikipedia documents
+Using a  10000  Wikipedia documents index
 ********** Processing 8 summary queries : 0->8 **********
 test/candidates/D0901-A.M.100.A.1
 test/candidates/D0901-A.M.100.A.2
