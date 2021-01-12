@@ -92,7 +92,7 @@ def main():
 	num_files = len(dic_automatic_summaries)
 
 	lst_doc_index = lst_index_files[0:opt.n]
-	print("Using a ", len(lst_doc_index), " Wikipedia documents")
+	print("Using a ", len(lst_doc_index), " Wikipedia documents index")
 	timestamp = "." + datetime.datetime.now().strftime('%Y.%m.%d.%Hh%M')
 	
 	pool = Pool(8)
