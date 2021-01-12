@@ -162,5 +162,10 @@ In the following list we explain the parameters you should use:
     4. wikisera - nouns, verbs, adjectives
 
 
+### Wikisera correlations
+The module `wikisera/correlation/wikisera_correlations.py` calculates Pearson, Spearman and Kendall correlations between wikiSERA automatic evaluations and manual (Pyramid) evaluations on TAC 2009 data. The main goal of the program is to reproduce the correlations reported on the paper, and compare them to other evaluation measures (like ROUGE). 
+
+### SERA-DIS
+The module `wikisera/SERA-DIS/ComputeSERADIS.py` is intended to take the order or the articles in the Wikipedia resulting vector into account in the SERA score. It relies on the document vectors output file to optimize the relevance analysis ordered comparition of the candidate and the reference Wikipedia document vectors (from `sera_raw*` output file). 
    
 
