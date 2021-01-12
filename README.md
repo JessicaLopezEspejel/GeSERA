@@ -68,14 +68,14 @@ score_sera_raw_5_0-8.2021.01.12.00h49.txt  sera_raw_5_0-8.2021.01.12.00h49.txt
 ```
 The content of the `test/output/score_sera_raw_5_0-8.2021.01.12.00h49.txt` shows the wikiSERA score for each candidate-reference comparison. The last column is the average each candidate-reference score. In our example from TAC 2009 we have 4 columns (one for each reference summary). The fifth column is the average wikiSERA score: 
 ```
-D0901-A.M.100.A.1       0.2 0.2 0.2 0.2 0.2
-D0901-A.M.100.A.2       0.4 0.8 1.0 0.6 0.7000000000000001
-D0901-A.M.100.A.3       0.6 0.4 0.6 0.4 0.5
-D0901-A.M.100.A.4       0.4 0.6 0.6 0.4 0.5
-D0901-A.M.100.A.5       0.6 0.6 0.6 0.6 0.6
+D0901-A.M.100.A.1       0.2 0.2 0.2 0.2 0.20
+D0901-A.M.100.A.2       0.4 0.8 1.0 0.6 0.70
+D0901-A.M.100.A.3       0.6 0.4 0.6 0.4 0.50
+D0901-A.M.100.A.4       0.4 0.6 0.6 0.4 0.50
+D0901-A.M.100.A.5       0.6 0.6 0.6 0.6 0.60
 D0901-A.M.100.A.6       0.4 0.6 0.8 0.4 0.55
-D0901-A.M.100.A.7       0.6 0.6 0.6 0.6 0.6
-D0901-A.M.100.A.8       0.4 0.6 0.6 0.4 0.5
+D0901-A.M.100.A.7       0.6 0.6 0.6 0.6 0.60
+D0901-A.M.100.A.8       0.4 0.6 0.6 0.4 0.50
 ```
 
 The output file `wikisera/output/sera_raw_5_0-8.2021.01.12.00h49.txt` shows retrieved documents from the Wikipedia subset for each evaluated file and its references:
