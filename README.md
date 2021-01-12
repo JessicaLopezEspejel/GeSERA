@@ -157,7 +157,7 @@ In the following list we explain the parameters you should use:
     1. raw - use all text without changes
     2. np - noun phrases
     3. kw - keywords
-    4. wikisera - noun, verb, adjective
+    4. wikisera - nouns, verbs, adjectives
 
 
    
