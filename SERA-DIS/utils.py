@@ -79,4 +79,4 @@ def write_file(path_save_file, dic_results):
     with open(path_save_file, 'w') as file:
         for key, value in dic_results.items():
             avg_scores = np.average(list(map(float, value))).tolist()
-            file.write(key + '\t' + ' '.join(value) + ' ' + str(avg_scores) + '\n')
+            file.write(key + '\t' + ' '.join(value) + ' ' + '{:.2f}'.format(avg_scores) + '\n')

@@ -32,15 +32,15 @@ def main():
     # print(path_sera_dis)
     # sys.exit()
     parser = argparse.ArgumentParser()
-    parser.add_argument('-path_sera_file', type=str, default=path_sera_dis+'/outputs/')
-    parser.add_argument('-save_sera_dis', type=str, default=path_sera_dis+'/outputs/')
+    parser.add_argument('-path_sera_file', type=str, default=path_sera_dis+'/test/output/')
+    parser.add_argument('-save_sera_dis', type=str, default=path_sera_dis+'/test/output/')
 
     opt = parser.parse_args()
 
-    lst_scores = glob.glob(opt.path_sera_file + 'sera_*')
+    lst_scores = glob.glob(opt.path_sera_file + 'test_reference_vectors*')
     for score_file in lst_scores:
         file_name = score_file.split('/')[-1]
-        path_save_file = opt.save_sera_dis + 'score_dis_' + file_name
+        path_save_file = opt.save_sera_dis + 'dis_score_' + file_name
 
         dic_results = read_file(score_file)
         write_file(path_save_file, dic_results)
