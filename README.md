@@ -1,6 +1,8 @@
 
 
 # wikiSERA
+
+This repository contains the dataset and code related to our submission to the NAACL 2021 conference  *"wikiSERA: A Summary Evaluation System using Information Retrieval from Wikipedia"*. The demonstration video of our system is available  [here](https://youtu.be/yjwAXhUsOoM).
 <!--
 SERA (Summarization Evaluation by Relevance Analysis) is an evaluation method for automatic 
 summarization proposed by [(Cohan and Goharian, 2016)](https://arxiv.org/pdf/1604.00400.pdf). Candidate (automatic) summaries are compared to (human) references by means of an information retrieval query to an indexed document corpus, where each summary is considered as a query and the resulting document vectors are compared. **wikiSERA** is an open source implementation of the SERA method that uses Wikipedia documents as a corpus for general domain summaries evaluation. 
