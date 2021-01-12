@@ -33,6 +33,7 @@ def display_menu(refine_query, cut_off_point, sera, sera_type, poolq, sqr, pool,
     sum_dis_sera = 0
     dic_score = dict()
     lst_details = []
+    lst_average = []
     for path_candidate, lst_manual_summaries in dic_automatic_summaries.items():  # Candidate summary
 
         print('{}'.format(path_candidate))
@@ -103,7 +104,8 @@ def display_menu(refine_query, cut_off_point, sera, sera_type, poolq, sqr, pool,
                 cad_scores += str(score_dis_sera) + ' '
 
         avg_scores = np.average(list(map(float, cad_scores.split())))
-        dic_score[nom_file] = cad_scores + str(avg_scores)
+        lst_average.append(avg_scores)
+        dic_score[nom_file] = cad_scores + '{:.2f}'.format(avg_scores) #  str(round(avg_scores, 3))
 
         if num_file % write_chunk == 0 or num_file == num_files:
             t1 = time.time()
@@ -112,3 +114,6 @@ def display_menu(refine_query, cut_off_point, sera, sera_type, poolq, sqr, pool,
             writer_score.start()
             writer_details = threading.Thread(target=write_details, args=(name_details, lst_details))
             writer_details.start()
+
+    final_score = np.average(lst_average).tolist()
+    print("\nFINAL SCORE: " + sera_type + '-' + refine_query + '-' + str(cut_off_point) + ': ' + '{:.2f}'.format(final_score) + '\n')
