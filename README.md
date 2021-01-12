@@ -3,7 +3,7 @@
 # wikiSERA
 
 SERA (Summarization Evaluation by Relevance Analysis) is an evaluation method for automatic 
-summarization proposed by [(Cohan and Goharian, 2016)](https://arxiv.org/pdf/1604.00400.pdf). Candidate (automatic) summaries are compared to (human) references by means of an information retrieval query to an indexed document corpus. **wikiSERA** is an open source implementation of the SERA method that uses Wikipedia documentsas a corpus for general domain summaries evaluation. 
+summarization proposed by [(Cohan and Goharian, 2016)](https://arxiv.org/pdf/1604.00400.pdf). Candidate (automatic) summaries are compared to (human) references by means of an information retrieval query to an indexed document corpus, where each summary is considered as a query and the resulting document vectors are compared. **wikiSERA** is an open source implementation of the SERA method that uses Wikipedia documentsas a corpus for general domain summaries evaluation. 
 
 ## About this code
 
@@ -61,19 +61,26 @@ test/candidates/D0901-A.M.100.A.8
 ********** Evaluation done in 63.133s **********
 ```
 
-The content of the `test/output/` folde contains two files:
+The `test/output/` folder contains two files:
 ```bash
 $ ls /test/output/
 score_sera_raw_5_0-8.2021.01.12.00h49.txt  sera_raw_5_0-8.2021.01.12.00h49.txt
 ```
+The content of the `test/output/score_sera_raw_5_0-8.2021.01.12.00h49.txt` shows the wikiSERA score for each candidate-reference comparison. The last column is the average each candidate-reference score. In our example from TAC 2009 we have 4 columns (one for each reference summary). The fifth column is the average wikiSERA score: 
+```
+D0901-A.M.100.A.1       0.2 0.2 0.2 0.2 0.2
+D0901-A.M.100.A.2       0.4 0.8 1.0 0.6 0.7000000000000001
+D0901-A.M.100.A.3       0.6 0.4 0.6 0.4 0.5
+D0901-A.M.100.A.4       0.4 0.6 0.6 0.4 0.5
+D0901-A.M.100.A.5       0.6 0.6 0.6 0.6 0.6
+D0901-A.M.100.A.6       0.4 0.6 0.8 0.4 0.55
+D0901-A.M.100.A.7       0.6 0.6 0.6 0.6 0.6
+D0901-A.M.100.A.8       0.4 0.6 0.6 0.4 0.5
+```
 
-The content of the `wikisera/output/wikisera_scores.txt` shows wikiSERA score for each reference and the wikiSERA average score for that file: 
+The output file `wikisera/output/sera_raw_5_0-8.2021.01.12.00h49.txt` shows retrieved documents from the Wikipedia subset for each evaluated file and its references:
 ```
-```
-
-The output file `wikisera/output/wikisera_retrieved_docs.txt` shows retrieved documents from the Wikipedia subset for each evaluated file and its references:
-```
-$ head output/wikisera_retrieved_docs_0-8.txt 
+$ head test/output/sera_raw_5_0-8.2021.01.12.00h49.txt 
 D0901-A.M.100.A.1       ('id_51299_Jammu-and-Kas', 'id_59659_Vallabhbhai-P', 'id_2269057_Mansoor-', 'id_16826_K', 'id_554578_Maurya-Em')
 D0901-A.M.100.A.A       ('id_51299_Jammu-and-Kas', 'id_59659_Vallabhbhai-P', 'id_2188274_Pokhra', 'id_2084667_Jammu-Kashmir-Liberation-F', 'id_22158_Nuclear-prolifera')
 D0901-A.M.100.A.C       ('id_2269057_Mansoor-', 'id_51299_Jammu-and-Kas', 'id_59659_Vallabhbhai-P', 'id_2084667_Jammu-Kashmir-Liberation-F', 'id_373733_V-P-S')
@@ -129,60 +136,22 @@ index_name
 In the following list we explain the parameters you should use:
 
 ###### Parameters:
-- `-r folder_name` In this folder we have the gold standard summaries
-- `-c folder_name` It is the folder where there are the candidate docs
-- `-o folder_name` It is the folder where the scores are stored
-- `-p number` Number equal to the rank of the cut-off point. It is the number of documents selected from the index, most related to a query.
-                   We experimented with 5 and 10 ranke check-off point.
-- `-n number` It is the number of documents that are indexed
-- `-i number-number` Interval of the number of summaries to evaluate
-- `-t value` Sera type: There are two possible values: *sera* or *dis*
-- `-x index_name` It is the name of the index 
-- `-d folder_name` It is the folder where there documents to index
-- `-s folder_name` It is the folder where the index is stored
-- `-q value` It is the method by which the query is redefined. There are four options:
+- `-r folder_name` Path of the gold standard reference summaries are located
+- `-c folder_name` Path of the candidate summaries to be evaluated
+- `-o folder_name` Output path
+- `-p number` Cut-off point. This parameter indicates the number of resulting documents selected from a query.
+- `-n number` Number of indexed documents
+- `-i number-number` Interval of summaries to evaluate (i.e. 0-10 will evaluate only the first 10 summaries of the candidates folder)
+- `-t value` Sera variant to be use. It can be *sera* (the order of the documents in the resulting vector is not taken into account) or *dis* (the order matters)
+- `-x index_name` Name of the index 
+- `-d folder_name` Path containing the documents to index
+- `-s folder_name` Path where the index is stored
+- `-q value` Query redefinition parameter:
 
     1. raw - use all text without changes
     2. np - noun phrases
     3. kw - keywords
     4. wikisera - noun, verb, adjective
-
-<!--
-- `-index_docs_folder` It is the folder where the documents that are indexed are. 
-The files are .txt
-- `-save_index_folder` It is the folder where the index files generated by whoosh are stored
-- `-reference_folder` In this folder we have the gold standard summaries
-- `-candidate_folder` It is the folder where there are the candidate docs
-- `-results_folder` It is the folder where the scores are stored
-- `-index_name` It is the name with which the index generated by whoosh is saved
-- `-cut_off_point` It is the  rank cut-off point . It is the number of documents selected from the index, most related to a query.
-                   We experimented with 5 and 10 ranke check-off point.
-- `-num_docs_index` It is the number of documents that are indexed
-- `-interval` Interval of the number of summaries to evaluate
-- `-sera_type` There are two possible values: *sera* or *dis*
-- `-refine_query` It is the method by which the query is redefined. There are four options:
-
-    1. raw - use all text without changes
-    2. np - noun phrases
-    3. kw - keywords
-    4. wikisera - noun, verb, adjective
--->
-## Dataset
-
-#### Queries
-We used the summaries from [TAC 2008](https://tac.nist.gov/data/past/2008/UpdateSumm08.html) as 
-queries. TAC 2008 contains 48 document sets; each set represents a different topic. 
-Each topic consists of two subsets: A and B. Each subset includes ten documents. 
-Subset B is the update of the documents in subset A.
-
-#### Index dataset
- 
-For the indexing of documents we use two databases: [AQUAINT-2](https://catalog.ldc.upenn.edu/LDC2008T25)
-and [Wikipedia]().
-
-AQUAINT-2 is a news article collection. It contains approximately 2.5 GB of text (about 907k). The articles are from October 2004 to March 2006. 
-All the articles are written in English. On the other hand, Wikipedia corpus contains approximately
-1,778k of documents.  
 
 
    
