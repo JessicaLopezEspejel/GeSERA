@@ -97,6 +97,9 @@ $ python wikisera.py
            -p 5
            -n 10000
            -i 0-2
+           -x wiki
+           -d data/wiki10000/
+           -s data/index/
   ```
 <!--
 python wikisera.py 
@@ -139,12 +142,15 @@ In the following list we explain the parameters you should use:
 - `-n number` It is the number of documents that are indexed
 - `-i number-number` Interval of the number of summaries to evaluate
 - `-t value` Sera type: There are two possible values: *sera* or *dis*
+- `-x index_name` It is the name of the index 
+- `-d folder_name` It is the folder where there documents to index
+- `-s folder_name` It is the folder where the index is stored
 - `-q value` It is the method by which the query is redefined. There are four options:
 
     1. raw - use all text without changes
     2. np - noun phrases
     3. kw - keywords
-    4. plus - noun, verb, adjective
+    4. wikisera - noun, verb, adjective
 
 <!--
 - `-index_docs_folder` It is the folder where the documents that are indexed are. 
@@ -164,7 +170,7 @@ The files are .txt
     1. raw - use all text without changes
     2. np - noun phrases
     3. kw - keywords
-    4. plus - noun, verb, adjective
+    4. wikisera - noun, verb, adjective
 -->
 ## Dataset
 

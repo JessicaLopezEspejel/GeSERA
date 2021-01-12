@@ -51,7 +51,6 @@ def main():
 	parser.add_argument('-n', type=int, default=10000)  # num_docs_index
 	parser.add_argument('-i', type=str, default=None)  # interval
 	parser.add_argument('-p', type=int, default=5)  # cut_off_point
-
 	parser.add_argument('-x', type=str, default='wiki')  # index name
 	parser.add_argument('-d', type=str, default=path_wikisera + '/data/wiki10000/')  # documents to index
 	parser.add_argument('-s', type=str, default=path_wikisera + '/data/index/')  # save index folder
@@ -75,7 +74,7 @@ def main():
 
 	total_summaries = len(lst_decoded_files)
 	print('*' * 10 + ' Found {} query summaries '.format(total_summaries) + '*' * 10)
-        
+
 	if opt.p != 5 and opt.p != 10:
 		print("The value of the rank cut point should be 5 or 10")
 

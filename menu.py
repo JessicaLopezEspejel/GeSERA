@@ -1,7 +1,25 @@
+# -*- coding: utf-8 -*-
+## Copyright (c) 2019-2021 Jessica López Espejel, Gaël de Chalendar and Jorge García Flores
+## LIPN/USPN-CEA/LIST
+
+## This file is part of wikiSERA
+
+##     wikiSERA is free software: you can redistribute it and/or modify
+##     it under the terms of the GNU General Public License as published by
+##     the Free Software Foundation, either version 3 of the License, or
+##     (at your option) any later version.
+
+##     wikiSERA is distributed in the hope that it will be useful,
+##     but WITHOUT ANY WARRANTY; without even the implied warranty of
+##     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+##     GNU General Public License for more details.
+
+##     You should have received a copy of the GNU General Public License
+##     along with Unoporuno.  If not, see <http://www.gnu.org/licenses/>.
+##
 
 import time
 import threading
-
 from utils import get_content
 from utils import write_details
 from utils import write_score
@@ -39,7 +57,7 @@ def display_menu(refine_query, cut_off_point, sera, sera_type, poolq, sqr, pool,
         if 'kw' in refine_query:  # Keywords
             dic_cand = poolq.apply_async(sqr.keywords,
                                          args=(parser_query, searcher, path_candidate, cntnt_cand, cut_off_point))
-        if 'plus' in refine_query:  # Noun phrases, verb, adjective
+        if 'wikisera' in refine_query:  # Noun phrases, verb, adjective
             dic_cand = poolq.apply_async(sqr.noun_verb_adjective,
                                          args=(parser_query, searcher, path_candidate, cntnt_cand, cut_off_point))
         dic_candidate = dic_cand.get()
@@ -64,7 +82,7 @@ def display_menu(refine_query, cut_off_point, sera, sera_type, poolq, sqr, pool,
             if 'kw' in refine_query:  # Keywords
                 dic_ref = poolq.apply_async(sqr.keywords,
                                             args=(parser_query, searcher, path_reference, cntnt_ref, cut_off_point))
-            if 'plus' in refine_query:  # noun phrases, verb, adjetive
+            if 'wikisera' in refine_query:  # noun phrases, verb, adjetive
                 dic_ref = poolq.apply_async(sqr.noun_verb_adjective,
                                             args=(parser_query, searcher, path_reference, cntnt_ref, cut_off_point))
             dic_reference = dic_ref.get()
