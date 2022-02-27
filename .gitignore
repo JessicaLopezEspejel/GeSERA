@@ -1,0 +1,10 @@
+# Classic ignores
+**/__pycache__
+**/.pytest_cache
+**/.vscode
+**/.ipynb_checkpoints
+**/.idea
+**/.pyc
+**/.DS_Store
+**/.mypy_cache
+

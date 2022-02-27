@@ -1,27 +1,28 @@
 # -*- coding: utf-8 -*-
-## Copyright (c) 2019-2021 Jessica López Espejel, Gaël de Chalendar and Jorge García Flores
-## LIPN/USPN-CEA/LIST
+# Copyright (c) 2019-2021 Jessica López Espejel, Gaël de Chalendar and Jorge García Flores
+# LIPN/USPN-CEA/LIST
 
-## This file is part of wikiSERA
+# This file is part of GeSERA
 
-##     wikiSERA is free software: you can redistribute it and/or modify
-##     it under the terms of the GNU General Public License as published by
-##     the Free Software Foundation, either version 3 of the License, or
-##     (at your option) any later version.
+# GeSERA is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 
-##     wikiSERA is distributed in the hope that it will be useful,
-##     but WITHOUT ANY WARRANTY; without even the implied warranty of
-##     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-##     GNU General Public License for more details.
+# GeSERA is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 
-##     You should have received a copy of the GNU General Public License
-##     along with Unoporuno.  If not, see <http://www.gnu.org/licenses/>.
-##
+# You should have received a copy of the GNU General Public License
+# along with Unoporuno.  If not, see <http://www.gnu.org/licenses/>.
+
 
 import os
+from typing import List
 
 
-def get_interval(interval):
+def get_interval(interval: str) -> List[int]:
 	tab = interval.split('-')
 	if len(tab) == 2:
 		input_interval = [int(tab[0]), int(tab[1])]
@@ -40,7 +41,7 @@ def get_content(path_name_file_index, pool):
 	return results
 
 
-def read_cntnt(path_file):
+def read_cntnt(path_file: str) -> str:
 	content = ''
 	with open(path_file, 'r', encoding='utf-8') as _file:
 		for line in _file:

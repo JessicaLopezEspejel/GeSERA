@@ -1,5 +1,6 @@
 Whoosh
 nltk
 numpy
-sklearn
+scikit-learn
 spacy
+importlib-metadata
